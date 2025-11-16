@@ -1,0 +1,30 @@
+name: apparelsclub
+services:
+  apparelsclub_web:
+    # Use 'build' to locate and run the Dockerfile in the current directory
+    build:
+      context: .
+      dockerfile: Dockerfile
+    
+    # Name the container for easier reference
+    container_name: apparelsclub_web_prod
+
+    # Map the host port 3000 to the container port 3000 (Next.js default)
+    ports:
+      - "3000:3000"
+
+    # Ensure the service attempts to restart automatically if it crashes or the host reboots
+    restart: always
+
+    # Environment variables for the runtime container
+    environment:
+      - NODE_ENV=production
+      # It's good practice to repeat hostname here too
+      - HOSTNAME=0.0.0.0
+    
+    # Define a basic health check to confirm the service is responsive
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:3000"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
