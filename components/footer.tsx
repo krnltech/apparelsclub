@@ -1,5 +1,5 @@
-import Link from "next/link"
-import { Facebook, Twitter, Instagram } from "lucide-react"
+import Link from "next/link";
+import { Facebook, Twitter, Instagram } from "lucide-react";
 
 export default function Footer() {
   return (
@@ -8,7 +8,9 @@ export default function Footer() {
       <div className="bg-primary/90 py-12">
         <div className="max-w-7xl mx-auto px-4 text-center">
           <h3 className="text-2xl font-bold mb-3">Stay Updated</h3>
-          <p className="mb-6 opacity-90">Subscribe to our newsletter for new arrivals and exclusive offers</p>
+          <p className="mb-6 opacity-90">
+            Subscribe to our newsletter for new arrivals and exclusive offers
+          </p>
           <div className="flex gap-2 max-w-md mx-auto">
             <input
               type="email"
@@ -27,7 +29,9 @@ export default function Footer() {
         {/* Company Info */}
         <div>
           <h4 className="text-xl font-bold mb-4">ApparelsClub</h4>
-          <p className="opacity-90 text-sm mb-4">Premium school uniforms for students of all ages.</p>
+          <p className="opacity-90 text-sm mb-4">
+            Premium school uniforms for students of all ages.
+          </p>
           <div className="flex gap-4">
             <button className="hover:opacity-80 transition">
               <Facebook className="w-5 h-5" />
@@ -73,7 +77,7 @@ export default function Footer() {
           <h5 className="font-semibold mb-4">Support</h5>
           <ul className="space-y-2 text-sm opacity-90">
             <li>
-              <Link href="#" className="hover:opacity-100 transition">
+              <Link href="/contact" className="hover:opacity-100 transition">
                 Contact Us
               </Link>
             </li>
@@ -128,5 +132,5 @@ export default function Footer() {
         <p>&copy; 2025 ApparelsClub. All rights reserved. | apparelsclub.com</p>
       </div>
     </footer>
-  )
+  );
 }
