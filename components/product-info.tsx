@@ -5,6 +5,7 @@ import { Product } from "@/lib/products";
 import { Button } from "@/components/ui/button";
 import { Star, Heart, Ruler, ShoppingBag } from "lucide-react";
 import { SimpleTrustBadges } from "@/components/trust-badges";
+import { PaymentIcons } from "@/components/payment-icons";
 import { SizeGuide } from "@/components/size-guide";
 
 type ProductInfoProps = {
@@ -150,6 +151,11 @@ export function ProductInfo({ product }: ProductInfoProps) {
       {/* Trust Badges */}
       <div className="pt-6 border-t">
         <SimpleTrustBadges />
+      </div>
+
+      {/* Payment Methods */}
+      <div className="pt-6 border-t">
+        <PaymentIcons showLabel={true} size="sm" className="justify-center sm:justify-start" />
       </div>
 
       {/* Product Features */}
