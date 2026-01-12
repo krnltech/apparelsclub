@@ -13,13 +13,13 @@ type SizeGuideProps = {
 export function SizeGuide({ open, onOpenChange, sizeGuideId }: SizeGuideProps) {
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className="max-w-4xl max-h-[80vh] overflow-y-auto">
+      <DialogContent className="max-w-full sm:max-w-2xl lg:max-w-4xl max-h-[85vh] overflow-y-auto p-4 sm:p-6">
         <DialogHeader>
           <DialogTitle className="text-2xl">Size Guide</DialogTitle>
         </DialogHeader>
 
         <Tabs defaultValue="trousers" className="w-full">
-          <TabsList className="grid w-full grid-cols-4">
+          <TabsList className="grid w-full grid-cols-2 sm:grid-cols-4 gap-1">
             <TabsTrigger value="trousers">Trousers</TabsTrigger>
             <TabsTrigger value="tops">Tops & Shirts</TabsTrigger>
             <TabsTrigger value="knitwear">Knitwear</TabsTrigger>
@@ -34,7 +34,8 @@ export function SizeGuide({ open, onOpenChange, sizeGuideId }: SizeGuideProps) {
               </p>
             </div>
 
-            <Table>
+            <div className="overflow-x-auto -mx-4 px-4 sm:mx-0 sm:px-0">
+              <Table className="min-w-[600px]">
               <TableHeader>
                 <TableRow>
                   <TableHead>Size</TableHead>
@@ -95,7 +96,8 @@ export function SizeGuide({ open, onOpenChange, sizeGuideId }: SizeGuideProps) {
                   <TableCell>170-176</TableCell>
                 </TableRow>
               </TableBody>
-            </Table>
+              </Table>
+            </div>
           </TabsContent>
 
           {/* Tops & Shirts Size Guide */}
@@ -106,7 +108,8 @@ export function SizeGuide({ open, onOpenChange, sizeGuideId }: SizeGuideProps) {
               </p>
             </div>
 
-            <Table>
+            <div className="overflow-x-auto -mx-4 px-4 sm:mx-0 sm:px-0">
+              <Table className="min-w-[600px]">
               <TableHeader>
                 <TableRow>
                   <TableHead>Size</TableHead>
@@ -167,7 +170,8 @@ export function SizeGuide({ open, onOpenChange, sizeGuideId }: SizeGuideProps) {
                   <TableCell>170-176</TableCell>
                 </TableRow>
               </TableBody>
-            </Table>
+              </Table>
+            </div>
           </TabsContent>
 
           {/* Knitwear Size Guide */}
@@ -178,7 +182,8 @@ export function SizeGuide({ open, onOpenChange, sizeGuideId }: SizeGuideProps) {
               </p>
             </div>
 
-            <Table>
+            <div className="overflow-x-auto -mx-4 px-4 sm:mx-0 sm:px-0">
+              <Table className="min-w-[600px]">
               <TableHeader>
                 <TableRow>
                   <TableHead>Size</TableHead>
@@ -231,7 +236,8 @@ export function SizeGuide({ open, onOpenChange, sizeGuideId }: SizeGuideProps) {
                   <TableCell>24"</TableCell>
                 </TableRow>
               </TableBody>
-            </Table>
+              </Table>
+            </div>
           </TabsContent>
 
           {/* Skirts Size Guide */}
@@ -242,7 +248,8 @@ export function SizeGuide({ open, onOpenChange, sizeGuideId }: SizeGuideProps) {
               </p>
             </div>
 
-            <Table>
+            <div className="overflow-x-auto -mx-4 px-4 sm:mx-0 sm:px-0">
+              <Table className="min-w-[600px]">
               <TableHeader>
                 <TableRow>
                   <TableHead>Size</TableHead>
@@ -303,7 +310,8 @@ export function SizeGuide({ open, onOpenChange, sizeGuideId }: SizeGuideProps) {
                   <TableCell>18"</TableCell>
                 </TableRow>
               </TableBody>
-            </Table>
+              </Table>
+            </div>
           </TabsContent>
         </Tabs>
 

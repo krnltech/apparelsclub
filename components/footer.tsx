@@ -15,19 +15,19 @@ export default function Footer() {
 
       {/* Newsletter Section */}
       <div className="bg-sky-50 py-12 border-y border-border">
-        <div className="max-w-7xl mx-auto px-4">
+        <div className="max-w-7xl mx-auto px-6 sm:px-4">
           <div className="max-w-2xl mx-auto text-center">
             <h3 className="text-2xl font-bold text-foreground mb-2">Stay Updated</h3>
-            <p className="text-muted-foreground mb-6">
+            <p className="text-muted-foreground mb-6 px-4 sm:px-0">
               Subscribe for the latest school uniform news and exclusive offers
             </p>
-            <div className="flex gap-2 max-w-md mx-auto">
+            <div className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto px-4 sm:px-0">
               <input
                 type="email"
                 placeholder="Enter your email"
-                className="flex-1 px-4 py-3 rounded-md border border-border bg-white text-foreground focus:outline-none focus:ring-2 focus:ring-primary"
+                className="flex-1 px-4 py-3 rounded-md border border-border bg-white text-foreground focus:outline-none focus:ring-2 focus:ring-primary w-full"
               />
-              <button className="bg-primary text-primary-foreground px-8 py-3 rounded-md font-semibold hover:bg-primary/90 transition whitespace-nowrap">
+              <button className="bg-primary text-primary-foreground px-6 sm:px-8 py-3 rounded-md font-semibold hover:bg-primary/90 transition whitespace-nowrap w-full sm:w-auto">
                 Subscribe
               </button>
             </div>

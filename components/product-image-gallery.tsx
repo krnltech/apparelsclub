@@ -43,7 +43,7 @@ export function ProductImageGallery({ product }: ProductImageGalleryProps) {
         {/* Zoom Button */}
         <button
           onClick={() => setZoomOpen(true)}
-          className="absolute bottom-4 right-4 bg-white/90 hover:bg-white p-3 rounded-lg shadow-lg opacity-0 group-hover:opacity-100 transition-opacity"
+          className="absolute bottom-4 right-4 bg-white/90 hover:bg-white p-3 rounded-lg shadow-lg opacity-100 lg:opacity-0 lg:group-hover:opacity-100 transition-opacity"
           aria-label="Zoom image"
         >
           <ZoomIn className="w-5 h-5" />
@@ -54,14 +54,14 @@ export function ProductImageGallery({ product }: ProductImageGalleryProps) {
           <>
             <button
               onClick={handlePrevious}
-              className="absolute left-4 top-1/2 -translate-y-1/2 bg-white/90 hover:bg-white p-2 rounded-full shadow-lg opacity-0 group-hover:opacity-100 transition-opacity"
+              className="absolute left-4 top-1/2 -translate-y-1/2 bg-white/90 hover:bg-white p-2 rounded-full shadow-lg opacity-100 lg:opacity-0 lg:group-hover:opacity-100 transition-opacity"
               aria-label="Previous image"
             >
               <ChevronLeft className="w-5 h-5" />
             </button>
             <button
               onClick={handleNext}
-              className="absolute right-4 top-1/2 -translate-y-1/2 bg-white/90 hover:bg-white p-2 rounded-full shadow-lg opacity-0 group-hover:opacity-100 transition-opacity"
+              className="absolute right-4 top-1/2 -translate-y-1/2 bg-white/90 hover:bg-white p-2 rounded-full shadow-lg opacity-100 lg:opacity-0 lg:group-hover:opacity-100 transition-opacity"
               aria-label="Next image"
             >
               <ChevronRight className="w-5 h-5" />
@@ -93,7 +93,7 @@ export function ProductImageGallery({ product }: ProductImageGalleryProps) {
 
       {/* Thumbnail Gallery */}
       {allImages.length > 1 && (
-        <div className="grid grid-cols-4 gap-3">
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3">
           {allImages.map((image, index) => (
             <button
               key={index}

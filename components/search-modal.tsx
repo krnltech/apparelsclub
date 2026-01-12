@@ -61,7 +61,7 @@ export function SearchModal({ open, onOpenChange }: SearchModalProps) {
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className="max-w-2xl p-0 gap-0">
+      <DialogContent className="max-w-full sm:max-w-2xl p-0 gap-0 mx-4 sm:mx-auto">
         <VisuallyHidden>
           <DialogTitle>Search Products</DialogTitle>
         </VisuallyHidden>
@@ -72,7 +72,7 @@ export function SearchModal({ open, onOpenChange }: SearchModalProps) {
             onValueChange={setQuery}
             className="border-0"
           />
-          <CommandList className="max-h-[400px]">
+          <CommandList className="max-h-[50vh] sm:max-h-[400px]">
             {query.length === 0 && recentSearches.length > 0 && (
               <CommandGroup heading="Recent Searches">
                 {recentSearches.map((search) => (
