@@ -22,15 +22,40 @@ npm run lint        # Run ESLint
 
 ## Docker Deployment
 
+### Production Mode
 ```bash
-# Build and run with Docker Compose
-docker compose up --build
+# Build and run production container
+docker compose up --build -d
 
 # The app will be available at http://localhost:3000
+
+# Stop production container
+docker compose down
 ```
 
+### Development Mode
+```bash
+# Build and run development container with hot reload
+docker compose -f docker-compose.dev.yaml up --build -d
+
+# The app will be available at http://localhost:3001
+
+# View logs
+docker compose -f docker-compose.dev.yaml logs -f
+
+# Stop development container
+docker compose -f docker-compose.dev.yaml down
+```
+
+**Development Docker Features:**
+- Runs `npm run dev` for hot reload
+- Source code mounted as volumes for live changes
+- Port 3001 (to avoid conflicts with production on 3000)
+- node_modules persisted in named volume
+- Faster iteration without rebuilding
+
 **Important Docker Notes:**
-- The Dockerfile uses a multi-stage build with Node.js 20 Alpine
+- Production uses multi-stage build with Node.js 20 Alpine
 - Uses `--legacy-peer-deps` flag to resolve React 19 / vaul peer dependency conflicts
 - The `lib` folder is explicitly copied to the production image as it contains runtime data (products.ts)
 - Build configuration in `next.config.mjs` has `typescript.ignoreBuildErrors: true` and `images.unoptimized: true`

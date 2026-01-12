@@ -1,0 +1,49 @@
+name: apparelsclub-dev
+services:
+  apparelsclub_web_dev:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+
+    container_name: apparelsclub_web_dev
+
+    # Map port 3001 for dev to avoid conflicts with production container
+    ports:
+      - "3001:3000"
+
+    # Mount source code for live reloading
+    volumes:
+      # Mount source directories for hot reload
+      - ./app:/app/app
+      - ./components:/app/components
+      - ./lib:/app/lib
+      - ./hooks:/app/hooks
+      - ./styles:/app/styles
+      - ./public:/app/public
+
+      # Mount config files
+      - ./next.config.mjs:/app/next.config.mjs
+      - ./tsconfig.json:/app/tsconfig.json
+      - ./postcss.config.mjs:/app/postcss.config.mjs
+      - ./components.json:/app/components.json
+
+      # Use named volume for node_modules to persist dependencies
+      - node_modules:/app/node_modules
+
+      # Mount .next for development cache (improves rebuild speed)
+      - ./.next:/app/.next
+
+    environment:
+      - NODE_ENV=development
+      - HOSTNAME=0.0.0.0
+      # Enable Next.js telemetry if desired (optional)
+      - NEXT_TELEMETRY_DISABLED=1
+
+    restart: unless-stopped
+
+    # Override to use sh for Alpine
+    stdin_open: true
+    tty: true
+
+volumes:
+  node_modules:
