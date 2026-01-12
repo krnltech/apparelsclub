@@ -1,0 +1,21 @@
+# Development Dockerfile
+FROM node:20-alpine
+
+# Set working directory
+WORKDIR /app
+
+# Copy package files
+COPY package.json ./
+COPY bun.lock ./
+
+# Install all dependencies (including devDependencies)
+RUN npm install --legacy-peer-deps
+
+# The source code will be mounted as a volume, so we don't copy it here
+# This allows for live reloading during development
+
+# Expose the development port
+EXPOSE 3000
+
+# Start the development server
+CMD ["npm", "run", "dev"]
