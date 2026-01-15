@@ -53,9 +53,9 @@ export default function Bestsellers() {
               href="/shop"
               className="group flex flex-col overflow-hidden rounded-xl bg-white shadow-md hover:shadow-xl transition-all duration-300"
             >
-              <div className="relative h-48 overflow-hidden bg-gradient-to-br from-purple-300 to-yellow-300">
+              <div className="relative h-48 overflow-hidden bg-slate-100">
                 <img
-                  src={product.image_url || "/placeholder.svg?height=192&width=256&query=school%20uniform"}
+                  src={product.images?.main || "/placeholder.svg"}
                   alt={product.product_name}
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                 />

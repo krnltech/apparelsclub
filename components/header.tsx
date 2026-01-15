@@ -2,8 +2,8 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
-import { Menu, Search, User, Heart } from "lucide-react";
-import { useWishlist } from "@/contexts/wishlist-context";
+import { Menu, Search, User } from "lucide-react";
+import { WishlistSheet } from "@/components/wishlist-sheet";
 import { categories } from "@/lib/products";
 import { NavigationMenu, NavigationMenuContent, NavigationMenuItem, NavigationMenuLink, NavigationMenuList, NavigationMenuTrigger } from "@/components/ui/navigation-menu";
 import { Sheet, SheetContent, SheetTrigger, SheetTitle } from "@/components/ui/sheet";
@@ -22,7 +22,6 @@ export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
   const [currentMessageIndex, setCurrentMessageIndex] = useState(0);
-  const { wishlistCount } = useWishlist();
 
   // Rotate trust messages every 4 seconds
   useEffect(() => {
@@ -217,14 +216,7 @@ export default function Header() {
               <button className="p-2 hover:bg-accent rounded-lg transition-colors">
                 <User className="w-5 h-5" />
               </button>
-              <button className="p-2 hover:bg-accent rounded-lg transition-colors relative">
-                <Heart className="w-5 h-5" />
-                {wishlistCount > 0 && (
-                  <span className="absolute -top-1 -right-1 bg-primary text-primary-foreground text-xs w-5 h-5 rounded-full flex items-center justify-center font-semibold">
-                    {wishlistCount}
-                  </span>
-                )}
-              </button>
+              <WishlistSheet />
 
               {/* Mobile Menu Button */}
               <Sheet open={isOpen} onOpenChange={setIsOpen}>
