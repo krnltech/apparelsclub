@@ -1,17 +1,17 @@
 "use client";
 
-import { useState } from "react";
 import Link from "next/link";
 import { Product } from "@/lib/products";
 import { Star, Heart } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { useWishlist } from "@/contexts/wishlist-context";
 
 type ProductCardProps = {
   product: Product;
 };
 
 export function ProductCard({ product }: ProductCardProps) {
-  const [isWishlisted, setIsWishlisted] = useState(false);
+  const { toggleWishlist, isInWishlist } = useWishlist();
+  const isWishlisted = isInWishlist(product.id);
 
   return (
     <div className="group relative bg-white rounded-lg overflow-hidden border border-border hover:shadow-lg transition-shadow duration-300">
@@ -53,10 +53,10 @@ export function ProductCard({ product }: ProductCardProps) {
       <button
         onClick={(e) => {
           e.preventDefault();
-          setIsWishlisted(!isWishlisted);
+          toggleWishlist(product.id);
         }}
         className="absolute top-3 right-3 bg-white/90 hover:bg-white p-2 rounded-full shadow-md opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10"
-        aria-label="Add to wishlist"
+        aria-label={isWishlisted ? "Remove from wishlist" : "Add to wishlist"}
       >
         <Heart
           className={`w-5 h-5 ${
@@ -95,18 +95,6 @@ export function ProductCard({ product }: ProductCardProps) {
             <span className="text-xs text-muted-foreground">
               ({product.reviews})
             </span>
-          </div>
-
-          {/* Price */}
-          <div className="flex items-baseline gap-2">
-            <span className="text-lg font-bold text-foreground">
-              {product.price}
-            </span>
-            {product.originalPrice && (
-              <span className="text-sm text-muted-foreground line-through">
-                {product.originalPrice}
-              </span>
-            )}
           </div>
 
           {/* Color Swatches Preview */}

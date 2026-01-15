@@ -17,7 +17,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 
-type SortOption = "popular" | "price-low" | "price-high" | "newest";
+type SortOption = "popular" | "newest";
 
 export default function Shop() {
   const [filters, setFilters] = useState<FilterState>({
@@ -25,7 +25,6 @@ export default function Shop() {
     subcategory: "all",
     sizes: [],
     colors: [],
-    priceRange: [0, 100],
   });
   const [sortBy, setSortBy] = useState<SortOption>("popular");
 
@@ -57,28 +56,8 @@ export default function Shop() {
       );
     }
 
-    // Price filter
-    result = result.filter((p) => {
-      const price = parseFloat(p.price.replace("£", ""));
-      return price >= filters.priceRange[0] && price <= filters.priceRange[1];
-    });
-
     // Sort
     switch (sortBy) {
-      case "price-low":
-        result.sort(
-          (a, b) =>
-            parseFloat(a.price.replace("£", "")) -
-            parseFloat(b.price.replace("£", ""))
-        );
-        break;
-      case "price-high":
-        result.sort(
-          (a, b) =>
-            parseFloat(b.price.replace("£", "")) -
-            parseFloat(a.price.replace("£", ""))
-        );
-        break;
       case "newest":
         result.sort((a, b) =>
           a.isNewArrival === b.isNewArrival ? 0 : a.isNewArrival ? -1 : 1
@@ -98,8 +77,7 @@ export default function Shop() {
     (filters.category !== "all" ? 1 : 0) +
     (filters.subcategory !== "all" ? 1 : 0) +
     filters.sizes.length +
-    filters.colors.length +
-    (filters.priceRange[0] !== 0 || filters.priceRange[1] !== 100 ? 1 : 0);
+    filters.colors.length;
 
   const clearFilters = () => {
     setFilters({
@@ -107,7 +85,6 @@ export default function Shop() {
       subcategory: "all",
       sizes: [],
       colors: [],
-      priceRange: [0, 100],
     });
   };
 
@@ -134,9 +111,6 @@ export default function Shop() {
             colors: filters.colors.filter((c) => c !== value),
           });
         }
-        break;
-      case "price":
-        setFilters({ ...filters, priceRange: [0, 100] });
         break;
     }
   };
@@ -204,8 +178,6 @@ export default function Shop() {
                   <SelectContent>
                     <SelectItem value="popular">Most Popular</SelectItem>
                     <SelectItem value="newest">Newest</SelectItem>
-                    <SelectItem value="price-low">Price: Low to High</SelectItem>
-                    <SelectItem value="price-high">Price: High to Low</SelectItem>
                   </SelectContent>
                 </Select>
               </div>
@@ -260,18 +232,6 @@ export default function Shop() {
                       <X className="w-3 h-3 ml-1" />
                     </Button>
                   ))}
-                  {(filters.priceRange[0] !== 0 ||
-                    filters.priceRange[1] !== 100) && (
-                    <Button
-                      variant="secondary"
-                      size="sm"
-                      onClick={() => removeFilter("price")}
-                      className="h-7 text-xs"
-                    >
-                      £{filters.priceRange[0]} - £{filters.priceRange[1]}
-                      <X className="w-3 h-3 ml-1" />
-                    </Button>
-                  )}
                   <Button
                     variant="ghost"
                     size="sm"

@@ -73,19 +73,14 @@ export default function FeaturedProducts() {
                   </div>
                 </div>
 
-                <div>
-                  <p className="text-2xl font-bold text-primary mb-3">{product.price}</p>
-                  <div className="flex gap-2 mb-4">
-                    {product.colors.map((color, i) => (
-                      <button
-                        key={i}
-                        className={`w-6 h-6 rounded-full border-2 border-muted hover:border-primary transition ${color}`}
-                      />
-                    ))}
-                  </div>
+                <div className="flex gap-2 mb-4">
+                  {product.colors.map((color, i) => (
+                    <button
+                      key={i}
+                      className={`w-6 h-6 rounded-full border-2 border-muted hover:border-primary transition ${color}`}
+                    />
+                  ))}
                 </div>
-
-                <Button className="w-full bg-primary text-primary-foreground hover:bg-primary/90">Add to Cart</Button>
               </div>
             </Card>
           ))}

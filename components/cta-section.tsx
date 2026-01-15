@@ -10,7 +10,7 @@ export default function CTA() {
           Ready to Upgrade Your School Uniform Game?
         </h2>
         <p className="text-lg text-purple-100 mb-8 text-balance">
-          Join thousands of satisfied parents and schools choosing ApparelsClub for quality, value, and reliability.
+          Choose ApparelsClub for quality, value, and reliability.
         </p>
         <Link href="/shop">
           <Button size="lg" className="bg-accent text-accent-foreground hover:bg-yellow-400 font-semibold">

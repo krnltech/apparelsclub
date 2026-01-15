@@ -22,7 +22,7 @@ export default function Hero() {
         <div className="text-white space-y-6 flex-1 md:max-w-lg">
           <div className="space-y-4">
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-balance leading-tight">
-              Premium School Uniforms Trusted by 1000+ Schools
+              Premium School Uniforms for Every Student
             </h1>
             <p className="text-lg md:text-xl text-gray-100">
               Where quality meets affordability. Comfortable, durable, and stylish uniforms for every student.
@@ -44,8 +44,8 @@ export default function Hero() {
           {/* Trust Signals */}
           <div className="grid grid-cols-3 gap-4 pt-4">
             <div>
-              <p className="font-bold text-2xl md:text-3xl text-accent">1000+</p>
-              <p className="text-sm text-gray-200">Partner Schools</p>
+              <p className="font-bold text-2xl md:text-3xl text-accent">Premium</p>
+              <p className="text-sm text-gray-200">Quality</p>
             </div>
             <div>
               <p className="font-bold text-2xl md:text-3xl text-accent">30 Days</p>
@@ -78,7 +78,7 @@ export default function Hero() {
               </li>
               <li className="flex items-start gap-3">
                 <span className="text-accent font-bold text-lg flex-shrink-0">✓</span>
-                <span>Trusted by 1000+ schools nationwide</span>
+                <span>Trusted quality nationwide</span>
               </li>
             </ul>
             <Link href="/shop" className="inline-block mt-6">

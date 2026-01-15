@@ -2,7 +2,8 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
-import { Menu, Search, User, ShoppingBag } from "lucide-react";
+import { Menu, Search, User, Heart } from "lucide-react";
+import { useWishlist } from "@/contexts/wishlist-context";
 import { categories } from "@/lib/products";
 import { NavigationMenu, NavigationMenuContent, NavigationMenuItem, NavigationMenuLink, NavigationMenuList, NavigationMenuTrigger } from "@/components/ui/navigation-menu";
 import { Sheet, SheetContent, SheetTrigger, SheetTitle } from "@/components/ui/sheet";
@@ -14,14 +15,14 @@ import { SearchModal } from "@/components/search-modal";
 const TRUST_MESSAGES = [
   { mobile: "FREE delivery over £50", desktop: "FREE delivery on orders over £50" },
   { mobile: "30-Day Money Back Guarantee", desktop: "30-Day Money Back Guarantee • No Questions Asked" },
-  { mobile: "Next Day Delivery Available", desktop: "Next Day Delivery Available • Order Before 3pm" },
-  { mobile: "Trusted by 1000+ UK Schools", desktop: "Trusted by 1000+ Schools Across the UK" }
+  { mobile: "Next Day Delivery Available", desktop: "Next Day Delivery Available • Order Before 3pm" }
 ];
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
   const [currentMessageIndex, setCurrentMessageIndex] = useState(0);
+  const { wishlistCount } = useWishlist();
 
   // Rotate trust messages every 4 seconds
   useEffect(() => {
@@ -217,10 +218,12 @@ export default function Header() {
                 <User className="w-5 h-5" />
               </button>
               <button className="p-2 hover:bg-accent rounded-lg transition-colors relative">
-                <ShoppingBag className="w-5 h-5" />
-                <span className="absolute -top-1 -right-1 bg-primary text-primary-foreground text-xs w-5 h-5 rounded-full flex items-center justify-center font-semibold">
-                  0
-                </span>
+                <Heart className="w-5 h-5" />
+                {wishlistCount > 0 && (
+                  <span className="absolute -top-1 -right-1 bg-primary text-primary-foreground text-xs w-5 h-5 rounded-full flex items-center justify-center font-semibold">
+                    {wishlistCount}
+                  </span>
+                )}
               </button>
 
               {/* Mobile Menu Button */}

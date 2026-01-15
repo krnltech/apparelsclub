@@ -78,7 +78,6 @@ export default function Bestsellers() {
                   </div>
                   <span className="text-xs text-muted-foreground">({product.reviews})</span>
                 </div>
-                <p className="text-xl font-bold text-primary mb-4">{product.price}</p>
                 <div className="flex items-center gap-2 text-primary font-semibold group-hover:gap-3 transition-all">
                   View <ArrowRight className="w-4 h-4" />
                 </div>
