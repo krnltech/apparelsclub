@@ -1,5 +1,5 @@
 import { Card } from "@/components/ui/card"
-import { CheckCircle, Leaf, Zap, Shield, Truck, Award } from "lucide-react"
+import { CheckCircle, Leaf, Zap, Shield, Award } from "lucide-react"
 
 const features = [
   {
@@ -21,11 +21,6 @@ const features = [
     icon: Shield,
     title: "Money Back Guarantee",
     description: "30-day returns policy, no questions asked",
-  },
-  {
-    icon: Truck,
-    title: "Free Delivery Over £50",
-    description: "Free shipping on all orders exceeding £50",
   },
   {
     icon: Award,
