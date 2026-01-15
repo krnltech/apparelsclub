@@ -42,7 +42,7 @@ export default function Footer() {
           <div>
             <h4 className="text-lg font-bold text-foreground mb-4">ApparelsClub</h4>
             <p className="text-muted-foreground text-sm mb-4 leading-relaxed">
-              Premium school uniforms trusted by over 1000+ schools across the UK.
+              Premium school uniforms for students across the UK.
               Quality meets affordability.
             </p>
             <div className="flex gap-3">

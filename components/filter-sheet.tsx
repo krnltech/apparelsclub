@@ -5,7 +5,6 @@ import { Button } from "@/components/ui/button";
 import { SlidersHorizontal } from "lucide-react";
 import { SizeFilter } from "@/components/size-filter";
 import { ColorFilter } from "@/components/color-filter";
-import { PriceRangeFilter } from "@/components/price-range-filter";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { categories } from "@/lib/products";
 import { FilterState } from "@/components/filter-sidebar";
@@ -162,16 +161,6 @@ export function FilterSheet({
               selectedColors={filters.colors}
               onColorChange={(colors) =>
                 onFilterChange({ ...filters, colors })
-              }
-            />
-          </div>
-
-          {/* Price Range Filter */}
-          <div className="border-t pt-6">
-            <PriceRangeFilter
-              priceRange={filters.priceRange}
-              onPriceChange={(range) =>
-                onFilterChange({ ...filters, priceRange: range })
               }
             />
           </div>

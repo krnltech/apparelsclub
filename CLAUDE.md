@@ -4,7 +4,9 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-This is a Next.js 16 e-commerce application for ApparelsClub, a school uniform retailer. The app uses React 19, TypeScript, Tailwind CSS v4, and shadcn/ui components with the "new-york" style variant.
+This is a Next.js 16 **catalogue-only** application for ApparelsClub, a school uniform retailer. The app uses React 19, TypeScript, Tailwind CSS v4, and shadcn/ui components with the "new-york" style variant.
+
+**Note**: This is a pilot/catalogue site - no e-commerce functionality (no prices, no cart, no checkout). Users can browse products and save items to a wishlist stored in browser localStorage.
 
 ## Development Commands
 
@@ -74,6 +76,8 @@ docker compose -f docker-compose.dev.yaml down
 - `app/` - Next.js pages and layouts
 - `components/` - Page-specific components (header, footer, hero, etc.)
 - `components/ui/` - shadcn/ui reusable components (57+ components)
+- `contexts/` - React Context providers
+  - `contexts/wishlist-context.tsx` - Wishlist state with localStorage persistence
 - `lib/` - Utilities and data
   - `lib/utils.ts` - Contains `cn()` helper for className merging
   - `lib/products.ts` - Product data and helper functions
@@ -142,8 +146,10 @@ export default function Page() {
 
 ### Client State Management
 - Uses React useState for local component state
-- No global state management library
-- Shop page maintains category selection and cart count locally
+- **Wishlist**: Global state via React Context (`WishlistProvider` in layout.tsx)
+  - Persists to localStorage under key `apparelsclub_wishlist`
+  - Provides: `toggleWishlist`, `isInWishlist`, `wishlistCount`
+- Shop page maintains category selection locally
 
 ### Image Handling
 - Images are unoptimized (see `next.config.mjs`)
@@ -168,3 +174,7 @@ export default function Page() {
 4. **Font Setup**: Uses Geist and Geist Mono fonts from `next/font/google` (variables defined but not applied to body className)
 
 5. **Runtime Data**: The `lib` folder contains data (products.ts) that's imported at runtime, not just build time, so it must be included in Docker production image
+
+6. **Catalogue Mode**: Prices are intentionally hidden from all product displays. The site functions as a product catalogue, not an e-commerce store.
+
+7. **Wishlist Feature**: Frontend-only wishlist stored in browser localStorage. No backend required.

@@ -16,6 +16,7 @@ services:
       # Mount source directories for hot reload
       - ./app:/app/app
       - ./components:/app/components
+      - ./contexts:/app/contexts
       - ./lib:/app/lib
       - ./hooks:/app/hooks
       - ./styles:/app/styles

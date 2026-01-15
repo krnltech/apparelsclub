@@ -2,10 +2,8 @@
 
 import { SizeFilter } from "@/components/size-filter";
 import { ColorFilter } from "@/components/color-filter";
-import { PriceRangeFilter } from "@/components/price-range-filter";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { Button } from "@/components/ui/button";
-import { X } from "lucide-react";
 import { categories } from "@/lib/products";
 
 export type FilterState = {
@@ -13,7 +11,6 @@ export type FilterState = {
   subcategory: string;
   sizes: string[];
   colors: string[];
-  priceRange: [number, number];
 };
 
 type FilterSidebarProps = {
@@ -31,9 +28,7 @@ export function FilterSidebar({
     filters.category !== "all" ||
     filters.subcategory !== "all" ||
     filters.sizes.length > 0 ||
-    filters.colors.length > 0 ||
-    filters.priceRange[0] !== 0 ||
-    filters.priceRange[1] !== 100;
+    filters.colors.length > 0;
 
   return (
     <aside className="w-64 bg-white border-r border-border p-6 space-y-6 sticky top-[120px] h-fit max-h-[calc(100vh-140px)] overflow-y-auto">
@@ -149,18 +144,10 @@ export function FilterSidebar({
       </div>
 
       {/* Color Filter */}
-      <div className="border-b pb-6">
+      <div className="pb-6">
         <ColorFilter
           selectedColors={filters.colors}
           onColorChange={(colors) => onFilterChange({ ...filters, colors })}
-        />
-      </div>
-
-      {/* Price Range Filter */}
-      <div className="pb-6">
-        <PriceRangeFilter
-          priceRange={filters.priceRange}
-          onPriceChange={(range) => onFilterChange({ ...filters, priceRange: range })}
         />
       </div>
     </aside>

@@ -2,7 +2,8 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
-import { Menu, Search, User, ShoppingBag } from "lucide-react";
+import { Menu, Search, User } from "lucide-react";
+import { WishlistSheet } from "@/components/wishlist-sheet";
 import { categories } from "@/lib/products";
 import { NavigationMenu, NavigationMenuContent, NavigationMenuItem, NavigationMenuLink, NavigationMenuList, NavigationMenuTrigger } from "@/components/ui/navigation-menu";
 import { Sheet, SheetContent, SheetTrigger, SheetTitle } from "@/components/ui/sheet";
@@ -14,8 +15,7 @@ import { SearchModal } from "@/components/search-modal";
 const TRUST_MESSAGES = [
   { mobile: "FREE delivery over £50", desktop: "FREE delivery on orders over £50" },
   { mobile: "30-Day Money Back Guarantee", desktop: "30-Day Money Back Guarantee • No Questions Asked" },
-  { mobile: "Next Day Delivery Available", desktop: "Next Day Delivery Available • Order Before 3pm" },
-  { mobile: "Trusted by 1000+ UK Schools", desktop: "Trusted by 1000+ Schools Across the UK" }
+  { mobile: "Next Day Delivery Available", desktop: "Next Day Delivery Available • Order Before 3pm" }
 ];
 
 export default function Header() {
@@ -216,12 +216,7 @@ export default function Header() {
               <button className="p-2 hover:bg-accent rounded-lg transition-colors">
                 <User className="w-5 h-5" />
               </button>
-              <button className="p-2 hover:bg-accent rounded-lg transition-colors relative">
-                <ShoppingBag className="w-5 h-5" />
-                <span className="absolute -top-1 -right-1 bg-primary text-primary-foreground text-xs w-5 h-5 rounded-full flex items-center justify-center font-semibold">
-                  0
-                </span>
-              </button>
+              <WishlistSheet />
 
               {/* Mobile Menu Button */}
               <Sheet open={isOpen} onOpenChange={setIsOpen}>

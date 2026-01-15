@@ -3,10 +3,11 @@
 import { useState } from "react";
 import { Product } from "@/lib/products";
 import { Button } from "@/components/ui/button";
-import { Star, Heart, Ruler, ShoppingBag } from "lucide-react";
+import { Star, Heart, Ruler } from "lucide-react";
 import { SimpleTrustBadges } from "@/components/trust-badges";
 import { PaymentIcons } from "@/components/payment-icons";
 import { SizeGuide } from "@/components/size-guide";
+import { useWishlist } from "@/contexts/wishlist-context";
 
 type ProductInfoProps = {
   product: Product;
@@ -16,6 +17,8 @@ export function ProductInfo({ product }: ProductInfoProps) {
   const [selectedSize, setSelectedSize] = useState<string>("");
   const [selectedColor, setSelectedColor] = useState(product.colors[0]?.name || "");
   const [sizeGuideOpen, setSizeGuideOpen] = useState(false);
+  const { toggleWishlist, isInWishlist } = useWishlist();
+  const isWishlisted = isInWishlist(product.id);
 
   const selectedColorObj = product.colors.find((c) => c.name === selectedColor);
 
@@ -45,18 +48,6 @@ export function ProductInfo({ product }: ProductInfoProps) {
             {product.rating} ({product.reviews} reviews)
           </span>
         </div>
-      </div>
-
-      {/* Price */}
-      <div className="flex items-baseline gap-3">
-        <span className="text-4xl font-bold text-foreground">
-          {product.price}
-        </span>
-        {product.originalPrice && (
-          <span className="text-xl text-muted-foreground line-through">
-            {product.originalPrice}
-          </span>
-        )}
       </div>
 
       {/* Description */}
@@ -132,19 +123,12 @@ export function ProductInfo({ product }: ProductInfoProps) {
       <div className="space-y-3 pt-4">
         <Button
           size="lg"
+          variant={isWishlisted ? "default" : "outline"}
           className="w-full text-base h-12"
-          disabled={!selectedSize || !selectedColorObj?.inStock}
+          onClick={() => toggleWishlist(product.id)}
         >
-          <ShoppingBag className="w-5 h-5 mr-2" />
-          Add to Cart
-        </Button>
-        <Button
-          size="lg"
-          variant="outline"
-          className="w-full text-base h-12"
-        >
-          <Heart className="w-5 h-5 mr-2" />
-          Add to Wishlist
+          <Heart className={`w-5 h-5 mr-2 ${isWishlisted ? "fill-current" : ""}`} />
+          {isWishlisted ? "Remove from Wishlist" : "Add to Wishlist"}
         </Button>
       </div>
 
